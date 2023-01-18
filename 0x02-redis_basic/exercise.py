@@ -7,7 +7,7 @@ import uuid
 from typing import Union
 
 
-class Cache():
+class Cache:
     """Represents a Redis DB object"""
 
     def __init__(self) -> None:
