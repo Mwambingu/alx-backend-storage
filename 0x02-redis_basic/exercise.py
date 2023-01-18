@@ -8,13 +8,12 @@ from typing import Union
 
 
 class Cache():
-    """Instantiates a Redis DB object"""
+    """Represents a Redis DB object"""
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Instantiates a Redis DB object"""
         self.__redis = redis.Redis()
-
-        if self.__redis:
-            self.__redis.flushdb()
+        self.__redis.flushdb(True)
 
     def store(self, data: Union[str, int, bytes, float]) -> str:
         """Takes args data sets in redisdb with a unique
