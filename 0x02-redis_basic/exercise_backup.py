@@ -4,7 +4,7 @@ Contains a class that instatiates a Redis Cache
 """
 import redis
 import uuid
-from typing import Union
+from typing import Union, Callable, Optional
 
 
 class Cache:
@@ -21,3 +21,16 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
+
+    def get(self, key: str, fn: Optional[Callable]):
+        """Power fantasy"""
+        obj = self._redis.get(key)
+        if obj:
+            return fn(obj)
+        return None
+    
+    def get_str(self):
+        pass
+    
+    def get_int(self):
+        pass
